@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Lock, User, UserPlus, Chrome, Github } from 'lucide-react';
+import { Mail, Lock, User, UserPlus, Chrome } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -9,7 +9,7 @@ interface RegisterPageProps {
 
 const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
-  const { register, signInWithGoogle, signInWithGitHub } = useAuth();
+  const { register, signInWithGoogle } = useAuth();
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -55,18 +55,6 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
     }
   };
 
-  const handleGitHubSignIn = async () => {
-    setError('');
-    setIsLoading(true);
-    
-    try {
-      await signInWithGitHub();
-    } catch (err: any) {
-      setError(err.message || 'GitHub sign-in failed. Please try again.');
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen flex items-center justify-center p-4 md:p-6">
       <div className="w-full max-w-md">
@@ -102,17 +90,6 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
                 <Chrome size={20} className="text-red-500" />
                 <span className="text-gray-700 dark:text-gray-300 font-medium">
                   Continue with Google
-                </span>
-              </button>
-              
-              <button
-                onClick={handleGitHubSignIn}
-                disabled={isLoading}
-                className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-70"
-              >
-                <Github size={20} className="text-gray-700 dark:text-gray-300" />
-                <span className="text-gray-700 dark:text-gray-300 font-medium">
-                  Continue with GitHub
                 </span>
               </button>
             </div>

@@ -166,7 +166,6 @@ export const translations: Translations = {
     
     // OAuth
     'continue with google': 'Continue with Google',
-    'continue with github': 'Continue with GitHub',
     'or continue with email': 'Or continue with email',
     'or register with email': 'Or register with email',
     'forgot password': 'Forgot password',
@@ -337,7 +336,6 @@ export const translations: Translations = {
     
     // OAuth
     'continue with google': 'Continuar con Google',
-    'continue with github': 'Continuar con GitHub',
     'or continue with email': 'O continuar con email',
     'or register with email': 'O registrarse con email',
     'forgot password': 'Olvidé mi contraseña',
@@ -508,7 +506,6 @@ export const translations: Translations = {
     
     // OAuth
     'continue with google': 'Continuer avec Google',
-    'continue with github': 'Continuer avec GitHub',
     'or continue with email': 'Ou continuer avec email',
     'or register with email': 'Ou s\'inscrire avec email',
     'forgot password': 'Mot de passe oublié',
@@ -679,7 +676,6 @@ export const translations: Translations = {
     
     // OAuth
     'continue with google': 'Mit Google fortfahren',
-    'continue with github': 'Mit GitHub fortfahren',
     'or continue with email': 'Oder mit E-Mail fortfahren',
     'or register with email': 'Oder mit E-Mail registrieren',
     'forgot password': 'Passwort vergessen',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Lock, LogIn, User, Chrome, Github } from 'lucide-react';
+import { Mail, Lock, LogIn, User, Chrome } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -10,7 +10,7 @@ interface LoginPageProps {
 
 const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
-  const { login, signInWithGoogle, signInWithGitHub } = useAuth();
+  const { login, signInWithGoogle } = useAuth();
   const { theme } = useTheme();
   
   const [email, setEmail] = useState('');
@@ -40,18 +40,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
       await signInWithGoogle();
     } catch (err: any) {
       setError(err.message || 'Google sign-in failed. Please try again.');
-      setIsLoading(false);
-    }
-  };
-
-  const handleGitHubSignIn = async () => {
-    setError('');
-    setIsLoading(true);
-    
-    try {
-      await signInWithGitHub();
-    } catch (err: any) {
-      setError(err.message || 'GitHub sign-in failed. Please try again.');
       setIsLoading(false);
     }
   };
@@ -91,17 +79,6 @@ const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 <Chrome size={20} className="text-red-500" />
                 <span className="text-gray-700 dark:text-gray-300 font-medium">
                   Continue with Google
-                </span>
-              </button>
-              
-              <button
-                onClick={handleGitHubSignIn}
-                disabled={isLoading}
-                className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-70"
-              >
-                <Github size={20} className="text-gray-700 dark:text-gray-300" />
-                <span className="text-gray-700 dark:text-gray-300 font-medium">
-                  Continue with GitHub
                 </span>
               </button>
             </div>
