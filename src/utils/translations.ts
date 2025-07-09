@@ -162,7 +162,7 @@ export const translations: Translations = {
     complianceDescription: 'Fully compliant with financial regulations and data protection laws',
     readyToStart: 'Ready to Take Control?',
     ctaDescription: 'Join thousands of users who have already transformed their financial lives with FinTrack.',
-    startFree: 'Start Free Today'
+    startFree: 'Start Free Today',
     
     // OAuth
     'continue with google': 'Continue with Google',
@@ -333,7 +333,7 @@ export const translations: Translations = {
     complianceDescription: 'Totalmente conforme con regulaciones financieras y leyes de protección de datos',
     readyToStart: '¿Listo para Tomar Control?',
     ctaDescription: 'Únete a miles de usuarios que ya han transformado sus vidas financieras con FinTrack.',
-    startFree: 'Comenzar Gratis Hoy'
+    startFree: 'Comenzar Gratis Hoy',
     
     // OAuth
     'continue with google': 'Continuar con Google',
@@ -504,7 +504,7 @@ export const translations: Translations = {
     complianceDescription: 'Entièrement conforme aux réglementations financières et aux lois de protection des données',
     readyToStart: 'Prêt à Prendre le Contrôle?',
     ctaDescription: 'Rejoignez des milliers d\'utilisateurs qui ont déjà transformé leur vie financière avec FinTrack.',
-    startFree: 'Commencer Gratuitement Aujourd\'hui'
+    startFree: 'Commencer Gratuitement Aujourd\'hui',
     
     // OAuth
     'continue with google': 'Continuer avec Google',
@@ -675,7 +675,7 @@ export const translations: Translations = {
     complianceDescription: 'Vollständig konform mit Finanzvorschriften und Datenschutzgesetzen',
     readyToStart: 'Bereit die Kontrolle zu Übernehmen?',
     ctaDescription: 'Schließen Sie sich Tausenden von Benutzern an, die bereits ihr finanzielles Leben mit FinTrack transformiert haben.',
-    startFree: 'Heute Kostenlos Starten'
+    startFree: 'Heute Kostenlos Starten',
     
     // OAuth
     'continue with google': 'Mit Google fortfahren',
