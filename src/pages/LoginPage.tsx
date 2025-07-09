@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Lock, LogIn, User } from 'lucide-react';
+import { Mail, Lock, LogIn, User, Chrome, Github } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -10,7 +10,7 @@ interface LoginPageProps {
 
 const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
   const { t } = useLanguage();
-  const { login } = useAuth();
+  const { login, signInWithGoogle, signInWithGitHub } = useAuth();
   const { theme } = useTheme();
   
   const [email, setEmail] = useState('');
@@ -25,9 +25,33 @@ const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
     
     try {
       await login(email, password);
-    } catch (err) {
-      setError('Invalid email or password');
+    } catch (err: any) {
+      setError(err.message || 'Login failed. Please try again.');
     } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setError('');
+    setIsLoading(true);
+    
+    try {
+      await signInWithGoogle();
+    } catch (err: any) {
+      setError(err.message || 'Google sign-in failed. Please try again.');
+      setIsLoading(false);
+    }
+  };
+
+  const handleGitHubSignIn = async () => {
+    setError('');
+    setIsLoading(true);
+    
+    try {
+      await signInWithGitHub();
+    } catch (err: any) {
+      setError(err.message || 'GitHub sign-in failed. Please try again.');
       setIsLoading(false);
     }
   };
@@ -56,6 +80,43 @@ const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 {error}
               </div>
             )}
+
+            {/* Social Login Buttons */}
+            <div className="space-y-3 mb-6">
+              <button
+                onClick={handleGoogleSignIn}
+                disabled={isLoading}
+                className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-70"
+              >
+                <Chrome size={20} className="text-red-500" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium">
+                  Continue with Google
+                </span>
+              </button>
+              
+              <button
+                onClick={handleGitHubSignIn}
+                disabled={isLoading}
+                className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-70"
+              >
+                <Github size={20} className="text-gray-700 dark:text-gray-300" />
+                <span className="text-gray-700 dark:text-gray-300 font-medium">
+                  Continue with GitHub
+                </span>
+              </button>
+            </div>
+
+            {/* Divider */}
+            <div className="relative mb-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+                  Or continue with email
+                </span>
+              </div>
+            </div>
             
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>

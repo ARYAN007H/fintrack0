@@ -163,6 +163,28 @@ export const translations: Translations = {
     readyToStart: 'Ready to Take Control?',
     ctaDescription: 'Join thousands of users who have already transformed their financial lives with FinTrack.',
     startFree: 'Start Free Today'
+    
+    // OAuth
+    'continue with google': 'Continue with Google',
+    'continue with github': 'Continue with GitHub',
+    'or continue with email': 'Or continue with email',
+    'or register with email': 'Or register with email',
+    'forgot password': 'Forgot password',
+    'remember me': 'Remember me',
+    'dont have an account': 'Don\'t have an account',
+    'already have an account': 'Already have an account',
+    'create an account': 'Create an account',
+    'register to start managing your finances': 'Register to start managing your finances',
+    'enter your credentials to access your account': 'Enter your credentials to access your account',
+    'welcome back': 'Welcome back',
+    'your name': 'Your name',
+    'i agree to the': 'I agree to the',
+    'and': 'and',
+    'privacy policy': 'Privacy Policy',
+    'all rights reserved': 'All rights reserved',
+    'privacy': 'Privacy',
+    'terms': 'Terms',
+    'contact': 'Contact'
   },
   
   es: {
@@ -312,6 +334,28 @@ export const translations: Translations = {
     readyToStart: '¿Listo para Tomar Control?',
     ctaDescription: 'Únete a miles de usuarios que ya han transformado sus vidas financieras con FinTrack.',
     startFree: 'Comenzar Gratis Hoy'
+    
+    // OAuth
+    'continue with google': 'Continuar con Google',
+    'continue with github': 'Continuar con GitHub',
+    'or continue with email': 'O continuar con email',
+    'or register with email': 'O registrarse con email',
+    'forgot password': 'Olvidé mi contraseña',
+    'remember me': 'Recordarme',
+    'dont have an account': 'No tienes una cuenta',
+    'already have an account': 'Ya tienes una cuenta',
+    'create an account': 'Crear una cuenta',
+    'register to start managing your finances': 'Regístrate para comenzar a gestionar tus finanzas',
+    'enter your credentials to access your account': 'Ingresa tus credenciales para acceder a tu cuenta',
+    'welcome back': 'Bienvenido de vuelta',
+    'your name': 'Tu nombre',
+    'i agree to the': 'Acepto los',
+    'and': 'y',
+    'privacy policy': 'Política de Privacidad',
+    'all rights reserved': 'Todos los derechos reservados',
+    'privacy': 'Privacidad',
+    'terms': 'Términos',
+    'contact': 'Contacto'
   },
   
   fr: {
@@ -461,6 +505,28 @@ export const translations: Translations = {
     readyToStart: 'Prêt à Prendre le Contrôle?',
     ctaDescription: 'Rejoignez des milliers d\'utilisateurs qui ont déjà transformé leur vie financière avec FinTrack.',
     startFree: 'Commencer Gratuitement Aujourd\'hui'
+    
+    // OAuth
+    'continue with google': 'Continuer avec Google',
+    'continue with github': 'Continuer avec GitHub',
+    'or continue with email': 'Ou continuer avec email',
+    'or register with email': 'Ou s\'inscrire avec email',
+    'forgot password': 'Mot de passe oublié',
+    'remember me': 'Se souvenir de moi',
+    'dont have an account': 'Vous n\'avez pas de compte',
+    'already have an account': 'Vous avez déjà un compte',
+    'create an account': 'Créer un compte',
+    'register to start managing your finances': 'Inscrivez-vous pour commencer à gérer vos finances',
+    'enter your credentials to access your account': 'Entrez vos identifiants pour accéder à votre compte',
+    'welcome back': 'Bon retour',
+    'your name': 'Votre nom',
+    'i agree to the': 'J\'accepte les',
+    'and': 'et',
+    'privacy policy': 'Politique de Confidentialité',
+    'all rights reserved': 'Tous droits réservés',
+    'privacy': 'Confidentialité',
+    'terms': 'Conditions',
+    'contact': 'Contact'
   },
   
   de: {
@@ -610,5 +676,27 @@ export const translations: Translations = {
     readyToStart: 'Bereit die Kontrolle zu Übernehmen?',
     ctaDescription: 'Schließen Sie sich Tausenden von Benutzern an, die bereits ihr finanzielles Leben mit FinTrack transformiert haben.',
     startFree: 'Heute Kostenlos Starten'
+    
+    // OAuth
+    'continue with google': 'Mit Google fortfahren',
+    'continue with github': 'Mit GitHub fortfahren',
+    'or continue with email': 'Oder mit E-Mail fortfahren',
+    'or register with email': 'Oder mit E-Mail registrieren',
+    'forgot password': 'Passwort vergessen',
+    'remember me': 'Angemeldet bleiben',
+    'dont have an account': 'Sie haben kein Konto',
+    'already have an account': 'Sie haben bereits ein Konto',
+    'create an account': 'Konto erstellen',
+    'register to start managing your finances': 'Registrieren Sie sich, um Ihre Finanzen zu verwalten',
+    'enter your credentials to access your account': 'Geben Sie Ihre Anmeldedaten ein, um auf Ihr Konto zuzugreifen',
+    'welcome back': 'Willkommen zurück',
+    'your name': 'Ihr Name',
+    'i agree to the': 'Ich stimme den',
+    'and': 'und',
+    'privacy policy': 'Datenschutzrichtlinie',
+    'all rights reserved': 'Alle Rechte vorbehalten',
+    'privacy': 'Datenschutz',
+    'terms': 'Bedingungen',
+    'contact': 'Kontakt'
   }
 };
