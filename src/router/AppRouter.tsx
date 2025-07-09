@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
+import LandingPage from '../pages/LandingPage';
 import Dashboard from '../pages/Dashboard';
 import AccountsPage from '../pages/AccountsPage';
 import TransactionsPage from '../pages/TransactionsPage';
@@ -15,14 +16,20 @@ import CurrencyConverter from '../pages/CurrencyConverter';
 const AppRouter: React.FC = () => {
   const { isAuthenticated } = useAuth();
   const [currentPage, setCurrentPage] = React.useState<string>('dashboard');
+  const [authPage, setAuthPage] = React.useState<'landing' | 'login' | 'register'>('landing');
 
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-100 dark:from-gray-900 dark:to-indigo-950">
-        {currentPage === 'login' ? (
-          <LoginPage onNavigate={() => setCurrentPage('register')} />
+        {authPage === 'landing' ? (
+          <LandingPage 
+            onGetStarted={() => setAuthPage('register')} 
+            onLogin={() => setAuthPage('login')} 
+          />
+        ) : authPage === 'login' ? (
+          <LoginPage onNavigate={() => setAuthPage('register')} />
         ) : (
-          <RegisterPage onNavigate={() => setCurrentPage('login')} />
+          <RegisterPage onNavigate={() => setAuthPage('login')} />
         )}
       </div>
     );
