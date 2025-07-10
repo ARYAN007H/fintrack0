@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { Notification, NotificationPreferences } from '../types/navigationTypes';
+import type { Notification, NotificationPreferences } from '../types/navigationTypes';
 
 interface NotificationContextType {
   notifications: Notification[];
