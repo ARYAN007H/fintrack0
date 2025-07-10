@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Search, Filter, ArrowUpDown, ArrowDownLeft, ArrowUpRight, ArrowLeftRight } from 'lucide-react';
 import { SkeletonList } from '../components/ui/SkeletonLoader';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
+import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useData } from '../context/DataContext';
@@ -147,13 +147,13 @@ const TransactionsPage: React.FC = () => {
             <Search size={18} className="absolute left-3 top-2.5 text-gray-400" />
           </div>
           
-          <button
+          <Button
             onClick={() => setShowAddForm(true)}
-            className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            variant="primary"
           >
             <Plus size={18} />
-            <span>{t('addTransaction')}</span>
-          </button>
+            {t('addTransaction')}
+          </Button>
         </div>
       </div>
       
@@ -256,27 +256,21 @@ const TransactionsPage: React.FC = () => {
             </div>
             
             <div className="flex justify-end gap-3 mt-6">
-              <button
+              <Button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                variant="secondary"
               >
                 {t('cancel')}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-70 disabled:hover:bg-purple-600 disabled:cursor-not-allowed flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 hover:shadow-md"
+                loading={isSubmitting}
+                variant="primary"
               >
-                {isSubmitting ? (
-                  <>
-                    <LoadingSpinner size="sm" />
-                    <span>{t('saving')}...</span>
-                  </>
-                ) : (
-                  t('save')
-                )}
-              </button>
+                {isSubmitting ? t('saving') : t('save')}
+              </Button>
             </div>
           </form>
         </div>
@@ -315,13 +309,14 @@ const TransactionsPage: React.FC = () => {
             </div>
           </div>
           
-          <button
+          <Button
             onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
-            className="flex items-center gap-1 text-sm px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm"
+            variant="secondary"
+            size="sm"
           >
             <ArrowUpDown size={16} />
-            <span>{sortOrder === 'desc' ? t('newest first') : t('oldest first')}</span>
-          </button>
+            {sortOrder === 'desc' ? t('newest first') : t('oldest first')}
+          </Button>
         </div>
         
         {filteredTransactions.length > 0 ? (
@@ -383,12 +378,12 @@ const TransactionsPage: React.FC = () => {
                   </p>
                   
                   <div className="flex gap-2">
-                    <button className="p-1.5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    <Button variant="ghost" size="sm" className="p-1.5">
                       {t('edit')}
-                    </button>
-                    <button className="p-1.5 text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    </Button>
+                    <Button variant="destructive" size="sm" className="p-1.5 bg-transparent text-red-500 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20">
                       {t('delete')}
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -402,12 +397,13 @@ const TransactionsPage: React.FC = () => {
                 : t('noTransactionsYet')}
             </p>
             {!searchQuery && filterType === 'all' && filterCategory === 'all' && (
-              <button
+              <Button
                 onClick={() => setShowAddForm(true)}
-                className="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                variant="primary"
+                className="mt-4"
               >
                 {t('addTransaction')}
-              </button>
+              </Button>
             )}
           </div>
         )}

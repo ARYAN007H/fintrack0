@@ -1,5 +1,6 @@
 import React from 'react';
 import { Palette, Globe, Bell, Shield, Download, CreditCard } from 'lucide-react';
+import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
 import { useCurrency } from '../context/CurrencyContext';
@@ -43,9 +44,10 @@ const SettingsPage: React.FC = () => {
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('darkMode')}
               </label>
-              <button
+              <Button
                 onClick={toggleTheme}
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                variant="ghost"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 min-h-[24px]"
                 aria-label={t('toggle theme')}
               >
                 <span
@@ -53,7 +55,7 @@ const SettingsPage: React.FC = () => {
                     theme === 'dark' ? 'translate-x-5' : ''
                   }`}
                 />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -154,42 +156,45 @@ const SettingsPage: React.FC = () => {
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('emailNotifications')}
               </label>
-              <button
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              <Button
+                variant="ghost"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 min-h-[24px]"
                 aria-label={t('toggle email notifications')}
               >
                 <span
                   className="absolute left-0.5 transform transition-transform duration-300 inline-block w-5 h-5 rounded-full bg-white shadow-sm translate-x-5"
                 />
-              </button>
+              </Button>
             </div>
             
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('pushNotifications')}
               </label>
-              <button
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              <Button
+                variant="ghost"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-gray-700 transition-all duration-300 min-h-[24px]"
                 aria-label={t('toggle push notifications')}
               >
                 <span
                   className="absolute left-0.5 transform transition-transform duration-300 inline-block w-5 h-5 rounded-full bg-white shadow-sm"
                 />
-              </button>
+              </Button>
             </div>
             
             <div className="flex justify-between items-center">
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('budgetAlerts')}
               </label>
-              <button
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+              <Button
+                variant="ghost"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 min-h-[24px]"
                 aria-label={t('toggle budget alerts')}
               >
                 <span
                   className="absolute left-0.5 transform transition-transform duration-300 inline-block w-5 h-5 rounded-full bg-white shadow-sm translate-x-5"
                 />
-              </button>
+              </Button>
             </div>
           </div>
         </div>
@@ -214,26 +219,26 @@ const SettingsPage: React.FC = () => {
           </div>
           
           <div className="p-6 space-y-4">
-            <button className="w-full px-4 py-2 text-left flex justify-between items-center border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
+            <Button variant="secondary" className="w-full justify-between">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('changePassword')}
               </span>
               <span className="text-xs bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300 px-2 py-0.5 rounded">
                 {t('recommended')}
               </span>
-            </button>
+            </Button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
+            <Button variant="secondary" className="w-full justify-start">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('twoFactorAuthentication')}
               </span>
-            </button>
+            </Button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
+            <Button variant="secondary" className="w-full justify-start">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('sessionManagement')}
               </span>
-            </button>
+            </Button>
           </div>
         </div>
         
@@ -255,23 +260,23 @@ const SettingsPage: React.FC = () => {
           </div>
           
           <div className="p-6 space-y-4">
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
+            <Button variant="secondary" className="w-full justify-start">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('exportAllData')}
               </span>
-            </button>
+            </Button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
+            <Button variant="secondary" className="w-full justify-start">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('exportTransactions')}
               </span>
-            </button>
+            </Button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 hover:shadow-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <Button variant="destructive" className="w-full justify-start bg-transparent text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-700 dark:hover:text-red-300">
+              <span className="text-sm font-medium">
                 {t('requestAccountDeletion')}
               </span>
-            </button>
+            </Button>
           </div>
         </div>
       </div>

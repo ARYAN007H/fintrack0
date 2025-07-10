@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, ArrowDownLeft, ArrowLeftRight } from 'lucide-react';
+import Button from '../ui/Button';
 import { useLanguage } from '../../context/LanguageContext';
 import { useCurrency } from '../../context/CurrencyContext';
 import { useData } from '../../context/DataContext';
@@ -49,9 +50,9 @@ const RecentTransactions: React.FC = () => {
       <div className="p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold text-gray-800 dark:text-white">{t('recentTransactions')}</h2>
-          <button className="text-sm text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 transition-colors px-2 py-1 rounded-md hover:bg-purple-50 dark:hover:bg-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-1">
+          <Button variant="link" size="sm">
             {t('viewAll')}
-          </button>
+          </Button>
         </div>
         
         {recentTransactions.length > 0 ? (
@@ -112,9 +113,9 @@ const RecentTransactions: React.FC = () => {
             <p className="text-gray-500 dark:text-gray-400">
               {t('noTransactionsYet')}
             </p>
-            <button className="mt-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors px-3 py-1.5 rounded-md hover:bg-purple-50 dark:hover:bg-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <Button variant="link" size="sm" className="mt-2">
               {t('addTransaction')}
-            </button>
+            </Button>
           </div>
         )}
       </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, RefreshCw } from 'lucide-react';
+import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency, CurrencyCode } from '../context/CurrencyContext';
 
@@ -89,13 +90,15 @@ const CurrencyConverter: React.FC = () => {
                   </div>
                   
                   <div className="flex items-end justify-center pb-1.5">
-                    <button
+                    <Button
                       onClick={handleSwapCurrencies}
-                      className="p-2 rounded-full border border-gray-200 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm"
+                      variant="secondary"
+                      size="sm"
+                      className="p-2 rounded-full"
                       aria-label={t('swap currencies')}
                     >
                       <ArrowRight size={20} className="text-gray-500 dark:text-gray-400" />
-                    </button>
+                    </Button>
                   </div>
                   
                   <div className="flex-1">
@@ -116,23 +119,16 @@ const CurrencyConverter: React.FC = () => {
                   </div>
                 </div>
                 
-                <button
+                <Button
                   onClick={handleConvert}
                   disabled={isConverting}
-                  className="w-full flex justify-center items-center gap-2 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-70 disabled:hover:bg-purple-600 disabled:cursor-not-allowed mt-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 hover:shadow-md"
+                  loading={isConverting}
+                  variant="primary"
+                  className="w-full mt-2"
                 >
-                  {isConverting ? (
-                    <>
-                      <RefreshCw size={20} className="animate-spin" />
-                      <span>{t('converting')}...</span>
-                    </>
-                  ) : (
-                    <>
-                      <RefreshCw size={20} />
-                      <span>{t('convert')}</span>
-                    </>
-                  )}
-                </button>
+                  <RefreshCw size={20} className={isConverting ? 'animate-spin' : ''} />
+                  {isConverting ? t('converting') : t('convert')}
+                </Button>
               </div>
             </div>
             
@@ -187,7 +183,7 @@ const CurrencyConverter: React.FC = () => {
               return (
                 <div 
                   key={index}
-                  className="flex justify-between items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="flex justify-between items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200 cursor-pointer"
                   tabIndex={0}
                   role="button"
                   onClick={() => {
