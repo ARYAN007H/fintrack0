@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAppShortcuts, useNavigationShortcuts } from '../hooks/useKeyboardShortcuts';
 import { useAuth } from '../context/AuthContext';
 import LandingPage from '../pages/LandingPage';
 import Dashboard from '../pages/Dashboard';
@@ -17,6 +18,18 @@ const AppRouter: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth();
   const [currentPage, setCurrentPage] = React.useState<string>('dashboard');
   const [authPage, setAuthPage] = React.useState<'landing' | 'login' | 'register'>('landing');
+
+  // Set up keyboard shortcuts
+  useNavigationShortcuts(setCurrentPage);
+  useAppShortcuts({
+    onSearch: () => {
+      // Focus search input if available
+      const searchInput = document.querySelector('input[type="search"], input[placeholder*="search" i]') as HTMLInputElement;
+      if (searchInput) {
+        searchInput.focus();
+      }
+    },
+  });
 
   // Show loading spinner while checking authentication
   if (isLoading) {

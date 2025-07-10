@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from './components/ui/ErrorBoundary';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { CurrencyProvider } from './context/CurrencyContext';
@@ -10,19 +11,21 @@ import './App.css';
 
 function App() {
   return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <CurrencyProvider>
-          <NotificationProvider>
-            <AuthProvider>
-              <DataProvider>
-                <AppRouter />
-              </DataProvider>
-            </AuthProvider>
-          </NotificationProvider>
-        </CurrencyProvider>
-      </LanguageProvider>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <LanguageProvider>
+          <CurrencyProvider>
+            <NotificationProvider>
+              <AuthProvider>
+                <DataProvider>
+                  <AppRouter />
+                </DataProvider>
+              </AuthProvider>
+            </NotificationProvider>
+          </CurrencyProvider>
+        </LanguageProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 
