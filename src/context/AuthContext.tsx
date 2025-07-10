@@ -77,7 +77,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     if (error) {
-      toast.error(error.message);
+      if (error.message.includes('over_email_send_rate_limit') || error.message.includes('rate limit')) {
+        toast.error('Too many requests. Please wait a moment before trying again.', {
+          duration: 6000,
+        });
+      } else {
+        toast.error(error.message);
+      }
       throw new Error(error.message);
     }
 
@@ -102,7 +108,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     if (error) {
-      toast.error(error.message);
+      if (error.message.includes('over_email_send_rate_limit') || error.message.includes('rate limit')) {
+        toast.error('Too many signup attempts. Please wait 50 seconds before trying again.', {
+          duration: 8000,
+        });
+      } else {
+        toast.error(error.message);
+      }
       throw new Error(error.message);
     }
 
@@ -128,7 +140,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     if (error) {
-      toast.error(error.message);
+      if (error.message.includes('over_email_send_rate_limit') || error.message.includes('rate limit')) {
+        toast.error('Too many authentication attempts. Please wait before trying again.', {
+          duration: 6000,
+        });
+      } else {
+        toast.error(error.message);
+      }
       throw new Error(error.message);
     }
     

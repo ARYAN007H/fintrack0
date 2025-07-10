@@ -63,6 +63,12 @@ const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
           <div className="p-6 md:p-8">
 
+            {error && (
+              <div className="mb-4 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg text-amber-700 dark:text-amber-400 text-sm">
+                {error}
+              </div>
+            )}
+
             {/* Social Login Buttons */}
             <div className="space-y-3 mb-6">
               <button

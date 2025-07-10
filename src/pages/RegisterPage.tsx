@@ -23,21 +23,26 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
     e.preventDefault();
     
     if (password !== confirmPassword) {
+      setError('Passwords do not match');
       // This validation error should still be shown locally
       return;
     }
     
     if (password.length < 6) {
+      setError('Password must be at least 6 characters long');
       // This validation error should still be shown locally
       return;
     }
     
     setIsLoading(true);
+    setError('');
     
     try {
       await register(name, email, password);
     } catch (err: any) {
-      // Error is now handled by toast in AuthContext
+      if (err.message.includes('over_email_send_rate_limit') || err.message.includes('rate limit')) {
+        setError('Too many signup attempts. Please wait 50 seconds before trying again.');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -45,11 +50,14 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);
+    setError('');
     
     try {
       await signInWithGoogle();
     } catch (err: any) {
-      // Error is now handled by toast in AuthContext
+      if (err.message.includes('over_email_send_rate_limit') || err.message.includes('rate limit')) {
+        setError('Too many authentication attempts. Please wait before trying again.');
+      }
       setIsLoading(false);
     }
   };
@@ -74,7 +82,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
           <div className="p-6 md:p-8">
             {(error || (password !== confirmPassword && confirmPassword) || (password.length > 0 && password.length < 6)) && (
-              <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
+              <div className={`mb-4 p-3 rounded-lg text-sm ${
+                error && (error.includes('rate limit') || error.includes('wait')) 
+                  ? 'bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-400'
+                  : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400'
+              }`}>
                 {password !== confirmPassword && confirmPassword ? 'Passwords do not match' :
                  password.length > 0 && password.length < 6 ? 'Password must be at least 6 characters long' :
                  error}
