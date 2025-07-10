@@ -104,30 +104,30 @@ const ReportsPage: React.FC = () => {
         <div className="flex overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700 p-0.5">
           <button
             onClick={() => setPeriod('week')}
-            className={`px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${
               period === 'week'
-                ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm'
-                : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
+                ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm transform scale-105'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-600/50'
             }`}
           >
             {t('week')}
           </button>
           <button
             onClick={() => setPeriod('month')}
-            className={`px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${
               period === 'month'
-                ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm'
-                : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
+                ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm transform scale-105'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-600/50'
             }`}
           >
             {t('month')}
           </button>
           <button
             onClick={() => setPeriod('year')}
-            className={`px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`px-4 py-2 text-sm font-medium transition-all duration-200 rounded-md ${
               period === 'year'
-                ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm'
-                : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white'
+                ? 'bg-white dark:bg-gray-600 text-gray-800 dark:text-white shadow-sm transform scale-105'
+                : 'text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-600/50'
             }`}
           >
             {t('year')}
@@ -136,7 +136,7 @@ const ReportsPage: React.FC = () => {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-md">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
             {t('income')}
           </h3>
@@ -149,7 +149,7 @@ const ReportsPage: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-md">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
             {t('expenses')}
           </h3>
@@ -162,7 +162,7 @@ const ReportsPage: React.FC = () => {
           </div>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-md">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
             {t('savings')}
           </h3>
@@ -176,7 +176,7 @@ const ReportsPage: React.FC = () => {
         </div>
       </div>
       
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden p-6 transition-all duration-300 hover:shadow-md">
         {chartType === 'income-expense' ? (
           <div>
             <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-6">
@@ -306,23 +306,23 @@ const ReportsPage: React.FC = () => {
         )}
       </div>
       
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-md">
         <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
           {t('export options')}
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 hover:shadow-sm">
             <p className="font-medium text-gray-800 dark:text-white">{t('export as CSV')}</p>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('for spreadsheets')}</p>
           </button>
           
-          <button className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 hover:shadow-sm">
             <p className="font-medium text-gray-800 dark:text-white">{t('export as PDF')}</p>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('for printing')}</p>
           </button>
           
-          <button className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+          <button className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 hover:shadow-sm">
             <p className="font-medium text-gray-800 dark:text-white">{t('monthly report')}</p>
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('detailed summary')}</p>
           </button>

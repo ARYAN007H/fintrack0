@@ -1,9 +1,11 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { mockAccounts, mockTransactions, mockBudgets } from '../data/mockData';
 import { Account, Transaction, Budget, Category } from '../types/dataTypes';
 import { useAuth } from './AuthContext';
 
 interface DataContextType {
+  isLoading: boolean;
   accounts: Account[];
   transactions: Transaction[];
   budgets: Budget[];
@@ -27,6 +29,7 @@ const DataContext = createContext<DataContextType | undefined>(undefined);
 
 export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [budgets, setBudgets] = useState<Budget[]>([]);
@@ -48,6 +51,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     if (isAuthenticated) {
+      setIsLoading(true);
       // Load saved data from localStorage
       const savedAccounts = localStorage.getItem('accounts');
       const savedTransactions = localStorage.getItem('transactions');
@@ -56,11 +60,15 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setAccounts(savedAccounts ? JSON.parse(savedAccounts) : []);
       setTransactions(savedTransactions ? JSON.parse(savedTransactions) : []);
       setBudgets(savedBudgets ? JSON.parse(savedBudgets) : []);
+      
+      // Simulate loading delay
+      setTimeout(() => setIsLoading(false), 500);
     } else {
       // Clear data on logout
       setAccounts([]);
       setTransactions([]);
       setBudgets([]);
+      setIsLoading(false);
     }
   }, [isAuthenticated]);
 
@@ -79,18 +87,21 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       id: Date.now().toString()
     };
     setAccounts(prev => [...prev, newAccount]);
+    toast.success('Account added successfully!');
   };
 
   const updateAccount = (id: string, updates: Partial<Account>) => {
     setAccounts(prev => prev.map(account => 
       account.id === id ? { ...account, ...updates } : account
     ));
+    toast.success('Account updated successfully!');
   };
 
   const deleteAccount = (id: string) => {
     setAccounts(prev => prev.filter(account => account.id !== id));
     // Also delete associated transactions
     setTransactions(prev => prev.filter(transaction => transaction.accountId !== id));
+    toast.success('Account deleted successfully!');
   };
 
   const addTransaction = (transaction: Omit<Transaction, 'id'>) => {
@@ -106,6 +117,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     updateAccount(transaction.accountId, {
       balance: (accounts.find(a => a.id === transaction.accountId)?.balance || 0) + amount
     });
+    toast.success('Transaction added successfully!');
   };
 
   const updateTransaction = (id: string, updates: Partial<Transaction>) => {
@@ -127,6 +139,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         balance: (accounts.find(a => a.id === oldTransaction.accountId)?.balance || 0) - oldAmount + newAmount
       });
     }
+    toast.success('Transaction updated successfully!');
   };
 
   const deleteTransaction = (id: string) => {
@@ -140,6 +153,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     updateAccount(transaction.accountId, {
       balance: (accounts.find(a => a.id === transaction.accountId)?.balance || 0) + amount
     });
+    toast.success('Transaction deleted successfully!');
   };
 
   const addBudget = (budget: Omit<Budget, 'id'>) => {
@@ -148,16 +162,19 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
       id: Date.now().toString()
     };
     setBudgets(prev => [...prev, newBudget]);
+    toast.success('Budget created successfully!');
   };
 
   const updateBudget = (id: string, updates: Partial<Budget>) => {
     setBudgets(prev => prev.map(budget => 
       budget.id === id ? { ...budget, ...updates } : budget
     ));
+    toast.success('Budget updated successfully!');
   };
 
   const deleteBudget = (id: string) => {
     setBudgets(prev => prev.filter(budget => budget.id !== id));
+    toast.success('Budget deleted successfully!');
   };
 
   const getTotalBalance = (): number => {
@@ -214,6 +231,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <DataContext.Provider value={{
+      isLoading,
       accounts,
       transactions,
       budgets,

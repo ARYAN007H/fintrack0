@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
+import toast from 'react-hot-toast';
 import { supabase } from '../lib/supabase';
 import type { User as SupabaseUser, Session } from '@supabase/supabase-js';
 
@@ -76,6 +77,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     if (error) {
+      toast.error(error.message);
       throw new Error(error.message);
     }
 
@@ -83,6 +85,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const convertedUser = convertSupabaseUser(data.user);
       setUser(convertedUser);
       setIsAuthenticated(true);
+      toast.success('Welcome back!');
     }
   };
 
@@ -99,6 +102,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     if (error) {
+      toast.error(error.message);
       throw new Error(error.message);
     }
 
@@ -107,6 +111,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const convertedUser = convertSupabaseUser(data.user);
       setUser(convertedUser);
       setIsAuthenticated(true);
+      toast.success('Account created successfully!');
     }
   };
 
@@ -123,6 +128,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     if (error) {
+      toast.error(error.message);
       throw new Error(error.message);
     }
     
@@ -133,11 +139,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const { error } = await supabase.auth.signOut();
     
     if (error) {
+      toast.error(error.message);
       throw new Error(error.message);
     }
 
     setUser(null);
     setIsAuthenticated(false);
+    toast.success('Logged out successfully');
   };
 
   return (

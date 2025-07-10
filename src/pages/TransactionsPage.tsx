@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Search, Filter, ArrowUpDown, ArrowDownLeft, ArrowUpRight, ArrowLeftRight } from 'lucide-react';
+import { SkeletonList } from '../components/ui/SkeletonLoader';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useData } from '../context/DataContext';
@@ -8,13 +10,14 @@ import { Transaction } from '../types/dataTypes';
 const TransactionsPage: React.FC = () => {
   const { t } = useLanguage();
   const { formatAmount } = useCurrency();
-  const { transactions, accounts, categories, addTransaction } = useData();
+  const { transactions, accounts, categories, addTransaction, isLoading } = useData();
   
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState<string>('all');
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'desc' | 'asc'>('desc');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const [newTransaction, setNewTransaction] = useState<Omit<Transaction, 'id'>>({
     date: new Date().toISOString().split('T')[0],
@@ -25,8 +28,13 @@ const TransactionsPage: React.FC = () => {
     category: 'other'
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
     addTransaction(newTransaction);
     setNewTransaction({
       date: new Date().toISOString().split('T')[0],
@@ -37,6 +45,7 @@ const TransactionsPage: React.FC = () => {
       category: 'other'
     });
     setShowAddForm(false);
+    setIsSubmitting(false);
   };
 
   const getTransactionIcon = (transaction: Transaction) => {
@@ -89,6 +98,30 @@ const TransactionsPage: React.FC = () => {
       const dateB = new Date(b.date).getTime();
       return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
     });
+
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-40 mb-2 animate-pulse"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-56 animate-pulse"></div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-48 animate-pulse"></div>
+            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-40 animate-pulse"></div>
+          </div>
+        </div>
+        
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-full animate-pulse"></div>
+          </div>
+          <SkeletonList count={8} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -232,9 +265,17 @@ const TransactionsPage: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+                disabled={isSubmitting}
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-70 disabled:hover:bg-purple-600 flex items-center gap-2"
               >
-                {t('save')}
+                {isSubmitting ? (
+                  <>
+                    <LoadingSpinner size="sm" />
+                    <span>{t('saving')}...</span>
+                  </>
+                ) : (
+                  t('save')
+                )}
               </button>
             </div>
           </form>

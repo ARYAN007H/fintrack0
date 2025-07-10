@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Lock, User, UserPlus, Chrome } from 'lucide-react';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -20,15 +21,14 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
     
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      // This validation error should still be shown locally
       return;
     }
     
     if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+      // This validation error should still be shown locally
       return;
     }
     
@@ -37,20 +37,19 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
     try {
       await register(name, email, password);
     } catch (err: any) {
-      setError(err.message || 'Registration failed. Please try again.');
+      // Error is now handled by toast in AuthContext
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleGoogleSignIn = async () => {
-    setError('');
     setIsLoading(true);
     
     try {
       await signInWithGoogle();
     } catch (err: any) {
-      setError(err.message || 'Google sign-in failed. Please try again.');
+      // Error is now handled by toast in AuthContext
       setIsLoading(false);
     }
   };
@@ -74,9 +73,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
         
         <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
           <div className="p-6 md:p-8">
-            {error && (
+            {(error || (password !== confirmPassword && confirmPassword) || (password.length > 0 && password.length < 6)) && (
               <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-400 text-sm">
-                {error}
+                {password !== confirmPassword && confirmPassword ? 'Passwords do not match' :
+                 password.length > 0 && password.length < 6 ? 'Password must be at least 6 characters long' :
+                 error}
               </div>
             )}
 
@@ -87,7 +88,11 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
                 disabled={isLoading}
                 className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-70"
               >
-                <Chrome size={20} className="text-red-500" />
+                {isLoading ? (
+                  <LoadingSpinner size="sm" />
+                ) : (
+                  <Chrome size={20} className="text-red-500" />
+                )}
                 <span className="text-gray-700 dark:text-gray-300 font-medium">
                   Continue with Google
                 </span>
@@ -205,7 +210,7 @@ const RegisterPage: React.FC<RegisterPageProps> = ({ onNavigate }) => {
                 className="w-full flex justify-center items-center gap-2 px-4 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-70 disabled:hover:bg-purple-600"
               >
                 {isLoading ? (
-                  <span className="inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  <LoadingSpinner size="sm" className="text-white" />
                 ) : (
                   <>
                     <UserPlus size={18} />

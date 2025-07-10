@@ -51,7 +51,7 @@ const AppRouter: React.FC = () => {
 
   return (
     <Layout currentPage={currentPage} onNavigate={setCurrentPage}>
-      {currentPage === 'dashboard' && <Dashboard />}
+      {currentPage === 'dashboard' && <Dashboard onNavigate={setCurrentPage} />}
       {currentPage === 'accounts' && <AccountsPage />}
       {currentPage === 'transactions' && <TransactionsPage />}
       {currentPage === 'budgets' && <BudgetsPage />}

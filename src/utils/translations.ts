@@ -120,6 +120,13 @@ export const translations: Translations = {
     to: 'To',
     convert: 'Convert',
     converted: 'Converted Amount',
+    quickActions: 'Quick Actions',
+    'record income or expense': 'Record income or expense',
+    'connect a new account': 'Connect a new account',
+    'set spending limits': 'Set spending limits',
+    'analyze your finances': 'Analyze your finances',
+    saving: 'Saving',
+    viewReports: 'View Reports',
     
     // Landing Page
     getStarted: 'Get Started',
@@ -290,6 +297,13 @@ export const translations: Translations = {
     to: 'A',
     convert: 'Convertir',
     converted: 'Monto Convertido',
+    quickActions: 'Acciones Rápidas',
+    'record income or expense': 'Registrar ingreso o gasto',
+    'connect a new account': 'Conectar una nueva cuenta',
+    'set spending limits': 'Establecer límites de gasto',
+    'analyze your finances': 'Analizar tus finanzas',
+    saving: 'Guardando',
+    viewReports: 'Ver Informes',
     
     // Landing Page
     getStarted: 'Comenzar',
@@ -460,6 +474,13 @@ export const translations: Translations = {
     to: 'À',
     convert: 'Convertir',
     converted: 'Montant Converti',
+    quickActions: 'Actions Rapides',
+    'record income or expense': 'Enregistrer revenus ou dépenses',
+    'connect a new account': 'Connecter un nouveau compte',
+    'set spending limits': 'Définir des limites de dépenses',
+    'analyze your finances': 'Analyser vos finances',
+    saving: 'Sauvegarde',
+    viewReports: 'Voir les Rapports',
     
     // Landing Page
     getStarted: 'Commencer',
@@ -630,6 +651,13 @@ export const translations: Translations = {
     to: 'Nach',
     convert: 'Umrechnen',
     converted: 'Umgerechneter Betrag',
+    quickActions: 'Schnellaktionen',
+    'record income or expense': 'Einkommen oder Ausgaben erfassen',
+    'connect a new account': 'Neues Konto verbinden',
+    'set spending limits': 'Ausgabenlimits festlegen',
+    'analyze your finances': 'Finanzen analysieren',
+    saving: 'Speichern',
+    viewReports: 'Berichte Anzeigen',
     
     // Landing Page
     getStarted: 'Loslegen',

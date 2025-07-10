@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, Search, CreditCard, Wallet, Landmark, DollarSign } from 'lucide-react';
+import { SkeletonCard } from '../components/ui/SkeletonLoader';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useData } from '../context/DataContext';
@@ -8,9 +10,10 @@ import { Account } from '../types/dataTypes';
 const AccountsPage: React.FC = () => {
   const { t } = useLanguage();
   const { formatAmount } = useCurrency();
-  const { accounts, addAccount } = useData();
+  const { accounts, addAccount, isLoading } = useData();
   const [showAddForm, setShowAddForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [newAccount, setNewAccount] = useState<Omit<Account, 'id'>>({
     name: '',
     type: 'checking',
@@ -19,8 +22,13 @@ const AccountsPage: React.FC = () => {
     color: '#7B61FF',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
     addAccount(newAccount);
     setNewAccount({
       name: '',
@@ -30,6 +38,7 @@ const AccountsPage: React.FC = () => {
       color: '#7B61FF',
     });
     setShowAddForm(false);
+    setIsSubmitting(false);
   };
 
   const getAccountIcon = (type: string) => {
@@ -51,6 +60,32 @@ const AccountsPage: React.FC = () => {
   );
 
   const totalBalance = accounts.reduce((sum, account) => sum + account.balance, 0);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-32 mb-2 animate-pulse"></div>
+            <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-48 animate-pulse"></div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-48 animate-pulse"></div>
+            <div className="h-10 bg-gray-200 dark:bg-gray-700 rounded w-32 animate-pulse"></div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+          <SkeletonCard />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -162,9 +197,17 @@ const AccountsPage: React.FC = () => {
               </button>
               <button
                 type="submit"
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+                disabled={isSubmitting}
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-70 disabled:hover:bg-purple-600 flex items-center gap-2"
               >
-                {t('save')}
+                {isSubmitting ? (
+                  <>
+                    <LoadingSpinner size="sm" />
+                    <span>{t('saving')}...</span>
+                  </>
+                ) : (
+                  t('save')
+                )}
               </button>
             </div>
           </form>
