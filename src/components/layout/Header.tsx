@@ -1,8 +1,10 @@
 import React from 'react';
-import { Menu, Bell, Search, Sun, Moon } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
+import { Menu, Search } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
+import NotificationsDropdown from '../navigation/NotificationsDropdown';
+import AccountDropdown from '../navigation/AccountDropdown';
+import ThemeToggle from '../navigation/ThemeToggle';
 
 interface HeaderProps {
   title: string;
@@ -10,8 +12,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ title, onMenuClick }) => {
-  const { theme, toggleTheme } = useTheme();
-  const { user } = useAuth();
   const { t } = useLanguage();
   const [showSearch, setShowSearch] = React.useState(false);
 
@@ -54,34 +54,11 @@ const Header: React.FC<HeaderProps> = ({ title, onMenuClick }) => {
             </button>
           )}
 
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-            aria-label={theme === 'dark' ? t('lightMode') : t('darkMode')}
-          >
-            {theme === 'dark' ? (
-              <Sun size={20} className="text-gray-300" />
-            ) : (
-              <Moon size={20} className="text-gray-600" />
-            )}
-          </button>
+          <ThemeToggle />
 
-          <button
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors relative"
-            aria-label="Notifications"
-          >
-            <Bell size={20} className="text-gray-600 dark:text-gray-300" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
+          <NotificationsDropdown />
 
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-8 rounded-full bg-purple-600 flex items-center justify-center text-white font-medium">
-              {user?.name.charAt(0).toUpperCase()}
-            </div>
-            <span className="hidden md:block text-sm font-medium text-gray-700 dark:text-gray-300">
-              {user?.name}
-            </span>
-          </div>
+          <AccountDropdown />
         </div>
       </div>
     </header>
