@@ -36,6 +36,11 @@ const TransactionsPage: React.FC = () => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 500));
     
+    setIsSubmitting(true);
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
     addTransaction(newTransaction);
     setNewTransaction({
       date: new Date().toISOString().split('T')[0],
@@ -46,6 +51,7 @@ const TransactionsPage: React.FC = () => {
       category: 'other'
     });
     setShowAddForm(false);
+    setIsSubmitting(false);
     setIsSubmitting(false);
   };
 

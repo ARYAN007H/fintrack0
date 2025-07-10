@@ -33,6 +33,11 @@ const BudgetsPage: React.FC = () => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 500));
     
+    setIsSubmitting(true);
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
     addBudget(newBudget);
     setNewBudget({
       name: '',
@@ -44,6 +49,7 @@ const BudgetsPage: React.FC = () => {
       color: '#7B61FF'
     });
     setShowAddForm(false);
+    setIsSubmitting(false);
     setIsSubmitting(false);
   };
 
