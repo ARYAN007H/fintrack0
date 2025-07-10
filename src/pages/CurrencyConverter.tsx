@@ -183,12 +183,19 @@ const CurrencyConverter: React.FC = () => {
               return (
                 <div 
                   key={index}
-                  className="flex justify-between items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200 cursor-pointer"
+                  className="flex justify-between items-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500"
                   tabIndex={0}
                   role="button"
                   onClick={() => {
                     setFromCurrency(pair.from as CurrencyCode);
                     setToCurrency(pair.to as CurrencyCode);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setFromCurrency(pair.from as CurrencyCode);
+                      setToCurrency(pair.to as CurrencyCode);
+                    }
                   }}
                 >
                   <div className="flex items-center">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Plus, Search, CreditCard, Wallet, Landmark, DollarSign } from 'lucide-react';
 import { SkeletonCard } from '../components/ui/SkeletonLoader';
 import Button from '../components/ui/Button';
+import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useData } from '../context/DataContext';
@@ -200,6 +201,8 @@ const AccountsPage: React.FC = () => {
                 disabled={isSubmitting}
                 loading={isSubmitting}
                 variant="primary"
+                loading={isSubmitting}
+                variant="primary"
               >
                 {isSubmitting ? t('saving') : t('save')}
               </Button>
@@ -279,6 +282,7 @@ const AccountsPage: React.FC = () => {
             <Button
               onClick={() => setShowAddForm(true)}
               variant="primary"
+              className="mt-4"
               className="mt-4"
             >
               {t('addAccount')}

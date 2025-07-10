@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Lock, LogIn, User, Chrome } from 'lucide-react';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
+import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -71,20 +72,16 @@ const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
 
             {/* Social Login Buttons */}
             <div className="space-y-3 mb-6">
-              <button
+              <Button
                 onClick={handleGoogleSignIn}
                 disabled={isLoading}
-                className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors disabled:opacity-70"
+                variant="secondary"
+                className="w-full"
+                loading={isLoading}
               >
-                {isLoading ? (
-                  <LoadingSpinner size="sm" />
-                ) : (
-                  <Chrome size={20} className="text-red-500" />
-                )}
-                <span className="text-gray-700 dark:text-gray-300 font-medium">
-                  Continue with Google
-                </span>
-              </button>
+                <Chrome size={20} className="text-red-500" />
+                Continue with Google
+              </Button>
             </div>
 
             {/* Divider */}
@@ -154,31 +151,29 @@ const LoginPage: React.FC<LoginPageProps> = ({ onNavigate }) => {
                 </label>
               </div>
               
-              <button
+              <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center items-center gap-2 px-4 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-70 disabled:hover:bg-purple-600"
+                loading={isLoading}
+                variant="primary"
+                className="w-full"
               >
-                {isLoading ? (
-                  <LoadingSpinner size="sm" className="text-white" />
-                ) : (
-                  <>
-                    <LogIn size={18} />
-                    <span>{t('login')}</span>
-                  </>
-                )}
-              </button>
+                <LogIn size={18} />
+                {t('login')}
+              </Button>
               
               <div className="text-center mt-6">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   {t('dont have an account')}?{' '}
-                  <button
+                  <Button
                     type="button"
                     onClick={onNavigate}
-                    className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium"
+                    variant="link"
+                    size="sm"
+                    className="p-0 h-auto"
                   >
                     {t('register')}
-                  </button>
+                  </Button>
                 </p>
               </div>
             </form>

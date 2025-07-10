@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Plus, Search, Filter, ArrowUpDown, ArrowDownLeft, ArrowUpRight, ArrowLeftRight } from 'lucide-react';
 import { SkeletonList } from '../components/ui/SkeletonLoader';
 import Button from '../components/ui/Button';
+import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useData } from '../context/DataContext';
@@ -268,6 +269,8 @@ const TransactionsPage: React.FC = () => {
                 disabled={isSubmitting}
                 loading={isSubmitting}
                 variant="primary"
+                loading={isSubmitting}
+                variant="primary"
               >
                 {isSubmitting ? t('saving') : t('save')}
               </Button>
@@ -311,6 +314,7 @@ const TransactionsPage: React.FC = () => {
           
           <Button
             onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
+            variant="secondary"
             variant="secondary"
             size="sm"
           >
@@ -400,6 +404,7 @@ const TransactionsPage: React.FC = () => {
               <Button
                 onClick={() => setShowAddForm(true)}
                 variant="primary"
+                className="mt-4"
                 className="mt-4"
               >
                 {t('addTransaction')}
