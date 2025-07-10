@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Plus, Search, Wallet } from 'lucide-react';
 import { SkeletonCard } from '../components/ui/SkeletonLoader';
 import Button from '../components/ui/Button';
-import Button from '../components/ui/Button';
 import { useLanguage } from '../context/LanguageContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useData } from '../context/DataContext';
@@ -33,11 +32,6 @@ const BudgetsPage: React.FC = () => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 500));
     
-    setIsSubmitting(true);
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
     addBudget(newBudget);
     setNewBudget({
       name: '',
@@ -49,7 +43,6 @@ const BudgetsPage: React.FC = () => {
       color: '#7B61FF'
     });
     setShowAddForm(false);
-    setIsSubmitting(false);
     setIsSubmitting(false);
   };
 
@@ -222,8 +215,6 @@ const BudgetsPage: React.FC = () => {
                 disabled={isSubmitting}
                 loading={isSubmitting}
                 variant="primary"
-                loading={isSubmitting}
-                variant="primary"
               >
                 {isSubmitting ? t('saving') : t('save')}
               </Button>
@@ -325,7 +316,6 @@ const BudgetsPage: React.FC = () => {
             <Button
               onClick={() => setShowAddForm(true)}
               variant="primary"
-              className="mt-4"
               className="mt-4"
             >
               {t('addBudget')}

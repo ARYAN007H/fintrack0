@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, ArrowDownLeft, ArrowLeftRight } from 'lucide-react';
 import Button from '../ui/Button';
-import Button from '../ui/Button';
 import { useLanguage } from '../../context/LanguageContext';
 import { useCurrency } from '../../context/CurrencyContext';
 import { useData } from '../../context/DataContext';

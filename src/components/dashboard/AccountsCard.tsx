@@ -1,7 +1,6 @@
 import React from 'react';
 import { TrendingUp } from 'lucide-react';
 import Button from '../ui/Button';
-import Button from '../ui/Button';
 import { useLanguage } from '../../context/LanguageContext';
 import { useCurrency } from '../../context/CurrencyContext';
 import { useData } from '../../context/DataContext';
@@ -73,7 +72,7 @@ const BudgetProgress: React.FC = () => {
         
         {budgets.length > 2 && (
           <Button variant="link" size="sm" className="w-full mt-4">
-          </Button>
+            {t('viewAll')} ({budgets.length})
           </Button>
         )}
       </div>
