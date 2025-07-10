@@ -45,7 +45,8 @@ const SettingsPage: React.FC = () => {
               </label>
               <button
                 onClick={toggleTheme}
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-colors duration-300"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                aria-label={t('toggle theme')}
               >
                 <span
                   className={`absolute left-0.5 transform transition-transform duration-300 inline-block w-5 h-5 rounded-full bg-white shadow-sm ${
@@ -154,7 +155,8 @@ const SettingsPage: React.FC = () => {
                 {t('emailNotifications')}
               </label>
               <button
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-colors duration-300"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                aria-label={t('toggle email notifications')}
               >
                 <span
                   className="absolute left-0.5 transform transition-transform duration-300 inline-block w-5 h-5 rounded-full bg-white shadow-sm translate-x-5"
@@ -167,7 +169,8 @@ const SettingsPage: React.FC = () => {
                 {t('pushNotifications')}
               </label>
               <button
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-gray-700 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                aria-label={t('toggle push notifications')}
               >
                 <span
                   className="absolute left-0.5 transform transition-transform duration-300 inline-block w-5 h-5 rounded-full bg-white shadow-sm"
@@ -180,7 +183,8 @@ const SettingsPage: React.FC = () => {
                 {t('budgetAlerts')}
               </label>
               <button
-                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-colors duration-300"
+                className="relative inline-flex items-center px-0.5 py-0.5 rounded-full w-11 h-6 bg-gray-200 dark:bg-purple-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                aria-label={t('toggle budget alerts')}
               >
                 <span
                   className="absolute left-0.5 transform transition-transform duration-300 inline-block w-5 h-5 rounded-full bg-white shadow-sm translate-x-5"
@@ -210,7 +214,7 @@ const SettingsPage: React.FC = () => {
           </div>
           
           <div className="p-6 space-y-4">
-            <button className="w-full px-4 py-2 text-left flex justify-between items-center border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <button className="w-full px-4 py-2 text-left flex justify-between items-center border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('changePassword')}
               </span>
@@ -219,13 +223,13 @@ const SettingsPage: React.FC = () => {
               </span>
             </button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('twoFactorAuthentication')}
               </span>
             </button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('sessionManagement')}
               </span>
@@ -251,19 +255,19 @@ const SettingsPage: React.FC = () => {
           </div>
           
           <div className="p-6 space-y-4">
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('exportAllData')}
               </span>
             </button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('exportTransactions')}
               </span>
             </button>
             
-            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <button className="w-full px-4 py-2 text-left border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 hover:shadow-sm text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300">
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 {t('requestAccountDeletion')}
               </span>

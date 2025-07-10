@@ -127,6 +127,11 @@ export const translations: Translations = {
     'analyze your finances': 'Analyze your finances',
     saving: 'Saving',
     viewReports: 'View Reports',
+    'swap currencies': 'Swap currencies',
+    'toggle theme': 'Toggle theme',
+    'toggle email notifications': 'Toggle email notifications',
+    'toggle push notifications': 'Toggle push notifications',
+    'toggle budget alerts': 'Toggle budget alerts',
     
     // Navigation & Notifications
     notifications: 'Notifications',
@@ -348,6 +353,11 @@ export const translations: Translations = {
     'analyze your finances': 'Analizar tus finanzas',
     saving: 'Guardando',
     viewReports: 'Ver Informes',
+    'swap currencies': 'Intercambiar monedas',
+    'toggle theme': 'Cambiar tema',
+    'toggle email notifications': 'Alternar notificaciones por email',
+    'toggle push notifications': 'Alternar notificaciones push',
+    'toggle budget alerts': 'Alternar alertas de presupuesto',
     
     // Navigation & Notifications
     notifications: 'Notificaciones',
@@ -569,6 +579,11 @@ export const translations: Translations = {
     'analyze your finances': 'Analyser vos finances',
     saving: 'Sauvegarde',
     viewReports: 'Voir les Rapports',
+    'swap currencies': 'Échanger les devises',
+    'toggle theme': 'Basculer le thème',
+    'toggle email notifications': 'Basculer les notifications email',
+    'toggle push notifications': 'Basculer les notifications push',
+    'toggle budget alerts': 'Basculer les alertes budget',
     
     // Navigation & Notifications
     notifications: 'Notifications',
@@ -790,6 +805,11 @@ export const translations: Translations = {
     'analyze your finances': 'Finanzen analysieren',
     saving: 'Speichern',
     viewReports: 'Berichte Anzeigen',
+    'swap currencies': 'Währungen tauschen',
+    'toggle theme': 'Thema umschalten',
+    'toggle email notifications': 'E-Mail-Benachrichtigungen umschalten',
+    'toggle push notifications': 'Push-Benachrichtigungen umschalten',
+    'toggle budget alerts': 'Budget-Warnungen umschalten',
     
     // Navigation & Notifications
     notifications: 'Benachrichtigungen',

@@ -64,7 +64,8 @@ const QuickActions: React.FC<QuickActionsProps> = ({
             <button
               key={action.id}
               onClick={action.onClick}
-              className="group p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-transparent hover:shadow-lg transition-all duration-300 text-left"
+              className="group p-4 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-transparent hover:shadow-lg transition-all duration-300 text-left focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 hover:scale-105"
+              aria-label={action.description}
             >
               <div className={`w-12 h-12 ${action.color} rounded-lg flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform duration-300`}>
                 {action.icon}
