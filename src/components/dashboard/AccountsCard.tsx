@@ -19,7 +19,7 @@ const AccountsCard: React.FC = () => {
       <div className="p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-semibold text-gray-800 dark:text-white">{t('accounts')}</h2>
-          <button className="text-sm text-purple-600 dark:text-purple-400 font-medium flex items-center gap-1 hover:text-purple-700 dark:hover:text-purple-300 transition-colors">
+          <button className="text-sm text-purple-600 dark:text-purple-400 font-medium flex items-center gap-1 hover:text-purple-700 dark:hover:text-purple-300 transition-colors px-2 py-1 rounded-md hover:bg-purple-50 dark:hover:bg-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-1">
             <PlusCircle size={16} />
             <span>{t('addAccount')}</span>
           </button>
@@ -60,7 +60,7 @@ const AccountsCard: React.FC = () => {
         </div>
         
         {accounts.length > 3 && (
-          <button className="mt-4 text-center w-full py-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors">
+          <button className="mt-4 text-center w-full py-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors rounded-md hover:bg-purple-50 dark:hover:bg-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-500">
             {t('viewAll')} ({accounts.length})
           </button>
         )}

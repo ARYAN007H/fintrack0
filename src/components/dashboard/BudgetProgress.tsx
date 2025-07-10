@@ -63,14 +63,14 @@ const BudgetProgress: React.FC = () => {
         ) : (
           <div className="py-6 text-center">
             <p className="text-gray-500 dark:text-gray-400">{t('noBudgetsYet')}</p>
-            <button className="mt-2 text-sm font-medium text-purple-600 dark:text-purple-400">
+            <button className="mt-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors px-3 py-1.5 rounded-md hover:bg-purple-50 dark:hover:bg-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-500">
               {t('createBudget')}
             </button>
           </div>
         )}
         
         {budgets.length > 2 && (
-          <button className="mt-4 text-center w-full py-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors">
+          <button className="mt-4 text-center w-full py-2 text-sm font-medium text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors rounded-md hover:bg-purple-50 dark:hover:bg-purple-900/20 focus:outline-none focus:ring-2 focus:ring-purple-500">
             {t('viewAll')} ({budgets.length})
           </button>
         )}

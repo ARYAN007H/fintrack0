@@ -113,7 +113,7 @@ const AccountsPage: React.FC = () => {
           
           <button
             onClick={() => setShowAddForm(true)}
-            className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+            className="flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Plus size={18} />
             <span>{t('addAccount')}</span>
@@ -191,14 +191,14 @@ const AccountsPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowAddForm(false)}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                className="px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
               >
                 {t('cancel')}
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors disabled:opacity-70 disabled:hover:bg-purple-600 flex items-center gap-2"
+                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 disabled:opacity-70 disabled:hover:bg-purple-600 disabled:cursor-not-allowed flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 hover:shadow-md"
               >
                 {isSubmitting ? (
                   <>
@@ -264,10 +264,10 @@ const AccountsPage: React.FC = () => {
               </div>
               
               <div className="flex gap-2 mt-4">
-                <button className="flex-1 py-2 text-center text-sm font-medium border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                <button className="flex-1 py-2 text-center text-sm font-medium border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 hover:shadow-sm">
                   {t('edit')}
                 </button>
-                <button className="flex-1 py-2 text-center text-sm font-medium border border-purple-600 dark:border-purple-500 rounded-lg text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-colors">
+                <button className="flex-1 py-2 text-center text-sm font-medium border border-purple-600 dark:border-purple-500 rounded-lg text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 hover:shadow-sm">
                   {t('viewTransactions')}
                 </button>
               </div>
@@ -284,7 +284,7 @@ const AccountsPage: React.FC = () => {
           {!searchQuery && (
             <button
               onClick={() => setShowAddForm(true)}
-              className="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors"
+              className="mt-4 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-200 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
             >
               {t('addAccount')}
             </button>
